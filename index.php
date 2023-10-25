@@ -3,17 +3,26 @@
 <head>
 <meta name = "title" content='AZ-Store'>
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <title>AZ-Store</title>
 </head>
 <body>
 <header>
 <nav>
 <a href="">AZ[store]</a>
-<li><a href="">Home</a></li>
-<li><a href="">About</a></li>
+    <ul>
+    <li><a href="">Home</a></li>
+<li><a href="checkout.php">About</a></li>
 <li><a href="">Products</a></li>
 <li><a href="">Contact</a></li>
-<a href="">Login</a>
+    </ul>
+    <ul>
+    <a href="shopping-cart.php"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i></a>
+    <a href="">Login</a>
+
+    </ul>
+
+
 </nav>
 </header>
 <main>
