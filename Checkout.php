@@ -7,6 +7,8 @@
 <title>AZ-Store</title>
 </head>
 
+
+
 <body>
     <section>
         <div>
@@ -18,15 +20,27 @@
         </div>
     </section>
     <section class="form">
-        <form action="get">
+    
+        <form method="get" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>">
             <input type="text" placeholder="First name" id="first_name" autocomplete="off">
+            <span class="error"><?php echo $first_name_err;?></span>
             <input type="text" placeholder="Last name" id="last_name" autocomplete="off">
+            <span class="error"><?php echo $last_name_err;?></span>
             <input type="email" placeholder="Email" id="email" autocomplete="off">
+            <span class="error"><?php echo $email_err;?></span>
             <input type="text" placeholder="Address" id="adress" autocomplete="off">
+            <span class="error"><?php echo $adress_err;?></span>
             <input type="text" placeholder="City" id="city" autocomplete="off">
+            <span class="error"><?php echo $city_err;?></span>
             <input type="number" placeholder="Zip" id="zip" autocomplete="off">
+            <span class="error"><?php echo $zip_err;?></span>
             <input type="text" placeholder="Country" id="country" autocomplete="off">
+            <span class="error"><?php echo $country_name_err;?></span>
             <input type="submit" value="Submit">
         </form>
+        <?php
+    include './phpscripts/formValidate.php';
+
+    ?>
     </section>
 </body>
