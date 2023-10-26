@@ -63,6 +63,13 @@ if (isset($_GET['submit'])) {
         <li><strong>Country :</strong> <span class="result-user">' . $filterCountry . '</span></li>
         </ul>
         </div>';
-    }}}
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $productId = $_POST['productId'];
+    
+        $json_encode = file_get_contents('./Data/cart.json');
+        
+        
+        file_put_contents("./Data/cart.json", json_encode([]));
+    }}}}
 
     ?>

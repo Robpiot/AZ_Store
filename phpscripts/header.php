@@ -4,7 +4,7 @@
     <ul>
     <li><a href="index.php">Home</a></li>
 <li><a href="checkout.php">About</a></li>
-<li><a href="shopping-cart.php">Products</a></li>
+<li><a href="">Products</a></li>
 <li><a href="">Contact</a></li>
     </ul>
     <ul>
