@@ -1,78 +1,68 @@
 <?php
+function validateForm($_get) {
 
-$first_name = $last_name = $email = $address = $city = $zip = "";
 
-function validateForm($first_name, $last_name, $email, $address, $city, $zip) {
-    $first_name_err = $last_name_err = $email_err = $address_err = $city_err = $zip_err = "";
-
-    if(empty(trim($first_name))){
-        $first_name_err = "First name is required.";
-    } else{
-        $first_name = filter_var(trim($first_name), FILTER_SANITIZE_STRING);
-        if(!preg_match("/^[a-zA-Z-' ]*$/",$first_name)){
-            $first_name_err = "Only letters and white space allowed";
+if (isset($_GET['submit'])) {
+    $first_name = htmlspecialchars($_GET['first_name']);
+    $last_name = htmlspecialchars($_GET['last_name']);
+    $email = $_GET['email'];
+    $address = htmlspecialchars($_GET['address']);
+    $city = htmlspecialchars($_GET['city']);
+    $zip = $_GET['zip'];
+    $country = htmlspecialchars($_GET['country']);
+    
+    $filterFirstname = filter_var($first_name);
+    $filterLastname = filter_var($last_name);
+    $filterEmail = filter_var($email, FILTER_SANITIZE_EMAIL);
+    $filterAddress = filter_var($address);
+    $filterCity = filter_var($city,);
+    $filterZipCode = filter_var($zip, FILTER_SANITIZE_NUMBER_INT);
+    $filterCountry = filter_var($country,);
+    
+    $errors = [];
+    
+    if (empty($filterFirstname)) {
+        $errors[] = 'Firstname is required';
+    }
+    if (empty($filterLastname)) {
+        $errors[] = 'Lastname is required';
+    }
+    if (empty($filterEmail)) {
+        $errors[] = 'Email is required';
+    }
+    if (empty($filterAddress)) {
+        $errors[] = 'The address is required';
+    }
+    if (empty($filterCity)) {
+        $errors[] = 'City is required';
+    }
+    if (empty($filterZipCode)) {
+        $errors[] = 'ZipCode is required';
+    }
+    if (empty($filterCountry)) {
+        $errors[] = 'Country is required';
+    }
+    
+    if (!empty($errors)) {
+        foreach ($errors as $error) {
+            echo '<span class="error">' . $error . '</span>';
         }
-    }
-    if(empty(trim($last_name))){
-        $last_name_err = "Last name is required.";
-    } else{
-        $last_name = filter_var(trim($last_name), FILTER_SANITIZE_STRING);
-        if(!preg_match("/^[a-zA-Z-' ]*$/",$last_name)){
-            $last_name_err = "Only letters and white space allowed";
-        }
-    }
-    if(empty(trim($email))){
-        $email_err = "Email is required.";
-    } else{
-        $email = filter_var(trim($email), FILTER_SANITIZE_EMAIL);
-        if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-            $email_err = "Invalid email format";
-        }
-    }
-    if(empty(trim($address))){
-        $address_err = "Address is required.";
-    } else{
-        $address = filter_var(trim($address), FILTER_SANITIZE_STRING);
-    }
-    if(empty(trim($city))){
-        $city_err = "City is required.";
-    } else{
-        $city = filter_var(trim($city), FILTER_SANITIZE_STRING);
-    }
-    if(empty(trim($zip))){
-        $zip_err = "Zip code is required.";
-    } else{
-        $zip = filter_var(trim($zip), FILTER_SANITIZE_NUMBER_INT);
-        if(!preg_match("/^[0-9]{5}$/",$zip)){
-            $zip_err = "Invalid zip code format";
-        }
-    }
-
-    if(empty($first_name_err) && empty($last_name_err) && empty($email_err) && empty($address_err) && empty($city_err) && empty($zip_err)){
-        return "Your order has been saved.";
     } else {
-        $error_message = "There was an error with your order:";
-        $error_message .= "<ul>";
-        if(!empty($first_name_err)){
-            $error_message .= "<li>" . $first_name_err . "</li>";
-        }
-        if(!empty($last_name_err)){
-            $error_message .= "<li>" . $last_name_err . "</li>";
-        }
-        if(!empty($email_err)){
-            $error_message .= "<li>" . $email_err . "</li>";
-        }
-        if(!empty($address_err)){
-            $error_message .= "<li>" . $address_err . "</li>";
-        }
-        if(!empty($city_err)){
-            $error_message .= "<li>" . $city_err . "</li>";
-        }
-        if(!empty($zip_err)){
-            $error_message .= "<li>" . $zip_err . "</li>";
-        }
-        $error_message .= "</ul>";
-        return $error_message;
-    }
-}
-?>
+        unset($_SESSION['shopping-cart']);
+        
+        echo '
+        <div class="result">
+        <h2>Informations</h2>
+        <ul class="result_info">
+        <li><strong>Firstname : </strong> <span class="result-user">' . $filterFirstname . '</span></li>
+        <li><strong>Lastname : </strong> <span class="result-user">' . $filterLastname . '</span></li>
+        <li><strong>Email : </strong> <span class="result-user">' . $filterEmail . '</span></li>
+        <li><strong>Address : </strong> <span class="result-user">' . $filterAddress . '</span></li>
+        <li><strong>City : </strong> <span class="result-user">' . $filterCity . '</span></li>
+        <li><strong>ZipCode :</strong> <span class="result-user">' . $filterZipCode . '</span></li>
+        <li><strong>Country :</strong> <span class="result-user">' . $filterCountry . '</span></li>
+        </ul>
+        </div>';
+    }}}
+
+    ?>

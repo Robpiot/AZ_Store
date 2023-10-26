@@ -1,3 +1,8 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+?>
+
 <!DOCTYPE html>
 <html lang = ENG>
 <head>
@@ -10,37 +15,43 @@
 
 
 <body>
-    <section>
-        <div>
-            <h2>Checkout</h2>
-        </div>
-        <div class="items">
+<section>
+<div>
+<h2>Checkout</h2>
+</div>
+<div class="items">
 
-        </div>
-        </div>
-    </section>
-    <section class="form">
+</div>
+</div>
+</section>
+<section class="form">
+
+
+<form method="GET" action="checkout.php">
     
-        <form method="get" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>">
-            <input type="text" placeholder="First name" id="first_name" autocomplete="off">
-            <span class="error"><?php echo $first_name_err;?></span>
-            <input type="text" placeholder="Last name" id="last_name" autocomplete="off">
-            <span class="error"><?php echo $last_name_err;?></span>
-            <input type="email" placeholder="Email" id="email" autocomplete="off">
-            <span class="error"><?php echo $email_err;?></span>
-            <input type="text" placeholder="Address" id="adress" autocomplete="off">
-            <span class="error"><?php echo $adress_err;?></span>
-            <input type="text" placeholder="City" id="city" autocomplete="off">
-            <span class="error"><?php echo $city_err;?></span>
-            <input type="number" placeholder="Zip" id="zip" autocomplete="off">
-            <span class="error"><?php echo $zip_err;?></span>
-            <input type="text" placeholder="Country" id="country" autocomplete="off">
-            <span class="error"><?php echo $country_name_err;?></span>
-            <input type="submit" value="Submit">
-        </form>
-        <?php
-    include './phpscripts/formValidate.php';
+<input type="text" name ="first_name" placeholder="First name" id="first_name" autocomplete="off" required>
 
+<input type="text" name="last_name" placeholder="Last name" id="last_name" autocomplete="off" required>
+
+<input type="email" name="email" placeholder="Email" id="email" autocomplete="off" required>
+
+<input type="text" name="address" placeholder="Address" id="address" autocomplete="off"required>
+
+<input type="text" name="city" placeholder="City" id="city" autocomplete="off" required>
+
+<input type="number" name="zip" placeholder="Zip" id="zip" autocomplete="off" required>
+
+<input type="text" name="country" placeholder="Country" id="country" autocomplete="off" required>
+
+<input input name="submit" value="Submit" type="submit" class="form__button" required>
+</form>
+<?php
+include './phpscripts/formValidate.php';
+validateForm($_GET);
+    
+    
+    
     ?>
+    
     </section>
-</body>
+    </body>
