@@ -9,6 +9,19 @@
         "id": 2,
         "product": "Nike Air Max 270",
         "price": 140,
-        "image_url": "/AZ_Store/Ressources/shoe_two.png"
+        "image_url": "/AZ_Store/Ressources/shoe_one.png"
+    },
+    {
+        "id": 3,
+        "product": "Nike Air Max 270",
+        "price": 140,
+        "image_url": "/AZ_Store/Ressources/shoe_one.png"
+    },
+    {
+        "id": 4,
+        "product": "Nike Air Max 270",
+        "price": 140,
+        "image_url": "/AZ_Store/Ressources/shoe_one.png"
     }
+    
 ]
