@@ -1,8 +1,12 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+?>
 <!DOCTYPE html>
 <html lang = ENG>
 <head>
 <meta name = "title" content='AZ-Store'>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="./Assets/Styles/CSS/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <title>AZ-Store</title>
 </head>
@@ -38,52 +42,14 @@
     </section>
     <section>
         <div><h3>Our last products</h3></div>
-        <div>
-            <article class="card">
-                <div>
-                    <img src="Ressources/shoe_one.png" alt="shoe_one">
-                </div>
-                <div>
-                    <span><h3>NIKE Air</h3></span>
-                    <span><h4>234€</h4></span>
-                    <span><button>Add to cart</button></span>
-                </div>
-            </article>
-            <article class="card">
-                <div>
-                    <img src="Ressources/shoe_one.png" alt="shoe_one">
-                </div>
-                <div>
-                    <span><h3>NIKE Air</h3></span>
-                    <span><h4>234€</h4></span>
-                    <span><button>Add to cart</button></span>
-                </div>
-            </article>
-            <article class="card">
-                <div>
-                    <img src="Ressources/shoe_one.png" alt="shoe_one">
-                </div>
-                <div>
-                    <span><h3>NIKE Air</h3></span>
-                    <span><h4>234€</h4></span>
-                    <span><button>Add to cart</button></span>
-                </div>
-            </article>
-            <article class="card">
-                <div>
-                    <img src="Ressources/shoe_one.png" alt="shoe_one">
-                </div>
-                <div>
-                    <span><h3>NIKE Air</h3></span>
-                    <span><h4>234€</h4></span>
-                    <span><button>Add to cart</button></span>
-                </div>
-            </article>
-        </div>
+       
+        <?php
+        include './phpscripts/display_card.php';
+        ?>
     </section>
     <section>
         <div>
-        <img src="Ressources/shoe_one.png" alt="shoe_one">
+        <img src="Ressources/shoe_two.png" alt="shoe_one">
         <h3>WE PROVIDE YOU THE BESTQUALITY</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, esse quis ab ullam magni sit corporis, quam, quibusdam illum quaerat provident vero.</p>
         </div>
@@ -105,6 +71,9 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, facere! Molestiae impedit nostrum possimus!</p>
         </div>
     </section>
+    <?php include './phpscripts/cart.php'; 
+    add_to_cart($item)
+    ?>
 </main>
 <footer>
     <ul>
