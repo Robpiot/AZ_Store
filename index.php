@@ -11,24 +11,7 @@ ini_set('display_errors', 1);
 <title>AZ-Store</title>
 </head>
 <body>
-<header>
-<nav>
-<a href="">AZ[store]</a>
-    <ul>
-    <li><a href="">Home</a></li>
-<li><a href="checkout.php">About</a></li>
-<li><a href="">Products</a></li>
-<li><a href="">Contact</a></li>
-    </ul>
-    <ul>
-    <a href="shopping-cart.php"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i></a>
-    <a href="">Login</a>
-
-    </ul>
-
-
-</nav>
-</header>
+    <?php include './phpscripts/header.php'; ?>
 <main>
     <section>
         <div>
@@ -75,12 +58,7 @@ ini_set('display_errors', 1);
     add_to_cart($item)
     ?>
 </main>
-<footer>
-    <ul>
-        <a href="">Home</a>
-        <a href="">About</a>
-        <a href="">Product</a>
-        <a href="">Contact</a>
-    </ul>
-</footer>
+<?php
+include './phpscripts/footer.php';
+?>
 </body>
