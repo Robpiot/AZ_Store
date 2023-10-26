@@ -1,10 +1,10 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-    $products = file_get_contents('./Data/products.json');
-    $product = json_decode($products, true);
+    $jsonProducts = file_get_contents('./Data/cart.json');
+    $products = json_decode($jsonProducts, true);
         echo '<pre>';
-        print_r($product);
+        print_r($products);
         echo'</pre>';
     // obtenir les produits depuis JSON
     //$jsonProd = ".AZ_Store/Data/products.json"; // ?cherche les données de .json ?
@@ -36,24 +36,38 @@ ini_set('display_errors', 1);
 ?>
 <!DOCTYPE html>
 <html>
+
     <body>
         <h4>Panier</h4>
         <ul>
             <?php
-            if (isset($_SESSION['panier']) && is_array($_SESSION['panier']) && !empty($_SESSION['panier'])) {
-                $montantTotal = 0;
+            if (isset($products)){
+                foreach ($products as $elem => $produit) {
+
+                    $itemHtml = '<li>'. $produit["product"] .'-'.$produit["price"].'€ 
+                    <form method="GET" action="shopping-cart.php">
+                        <button value="'.$elem.'" type="submit" name="supprimer">delete</button>
+                        </form></li>';
+                echo $itemHtml;
+                
+                }
+            }
+
+          
+            // if (isset($_SESSION['panier']) && is_array($_SESSION['panier']) && !empty($_SESSION['panier'])) {
+            //     $montantTotal = 0;
                 // !empty($_SESSI... =vérifie si la variable de session $_SESSION['panier'] n'est pas vide
                 // is_array($_SESS... =vérifie si la variable $_SESSION['panier'] est de type tableau (array)
-                foreach ($_SESSION['panier'] as $elem => $produit) { 
-                    //accéder aux détails d'un produit précis du panier avec $produit, connaître la clé (ou l'indice) de cet élément dans l'array avec $elem. Pour créer une li des produits dans le panier avec ts les détails
-                    $montantTotal += $produit['prix'];
-                    echo "<li>{$produit['nom']} - {$produit['prix']} € 
-                        <a href='shopping-cart.php?supprimer=$elem'>Supprimer</a></li>";
-                }
-                echo "<li><strong>Montant total : $montantTotal €</strong></li>";
-            } else {
-                echo "<li>Le panier est vide.</li>";
-            }
+                // foreach ($_SESSION['panier'] as $elem => $produit) { 
+                //     //accéder aux détails d'un produit précis du panier avec $produit, connaître la clé (ou l'indice) de cet élément dans l'array avec $elem. Pour créer une li des produits dans le panier avec ts les détails
+                //     $montantTotal += $produit['prix'];
+                //     echo "<li>{$produit['nom']} - {$produit['prix']} € 
+                //         <a href='shopping-cart.php?supprimer=$elem'>Supprimer</a></li>";
+                // }
+            //     echo "<li><strong>Montant total : $montantTotal €</strong></li>";
+            // } else {
+            //     echo "<li>Le panier est vide.</li>";
+            // }
             ?>
         </ul>
         <form method="post" action="shopping-cart.php">
@@ -65,3 +79,6 @@ ini_set('display_errors', 1);
         </form>
     </body>
 </html>
+    <form method="GET" action="shopping-cart.php">
+        <button value="' . $elem . '" type="submit" name="id">delete</button>
+    </form>
