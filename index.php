@@ -42,48 +42,7 @@ ini_set('display_errors', 1);
     </section>
     <section>
         <div><h3>Our last products</h3></div>
-        <!-- <div>
-            <article class="card">
-                <div>
-                    <img src="Ressources/shoe_one.png" alt="shoe_one">
-                </div>
-                <div>
-                    <span><h3>NIKE Air</h3></span>
-                    <span><h4>234€</h4></span>
-                    <span><button>Add to cart</button></span>
-                </div>
-            </article>
-            <article class="card">
-                <div>
-                    <img src="Ressources/shoe_one.png" alt="shoe_one">
-                </div>
-                <div>
-                    <span><h3>NIKE Air</h3></span>
-                    <span><h4>234€</h4></span>
-                    <span><button>Add to cart</button></span>
-                </div>
-            </article>
-            <article class="card">
-                <div>
-                    <img src="Ressources/shoe_one.png" alt="shoe_one">
-                </div>
-                <div>
-                    <span><h3>NIKE Air</h3></span>
-                    <span><h4>234€</h4></span>
-                    <span><button>Add to cart</button></span>
-                </div>
-            </article>
-            <article class="card">
-                <div>
-                    <img src="Ressources/shoe_one.png" alt="shoe_one">
-                </div>
-                <div>
-                    <span><h3>NIKE Air</h3></span>
-                    <span><h4>234€</h4></span>
-                    <span><button>Add to cart</button></span>
-                </div>
-            </article>
-        </div> -->
+       
         <?php
         include './phpscripts/display_card.php';
         ?>
@@ -112,6 +71,9 @@ ini_set('display_errors', 1);
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, facere! Molestiae impedit nostrum possimus!</p>
         </div>
     </section>
+    <?php include './phpscripts/cart.php'; 
+    add_to_cart($item)
+    ?>
 </main>
 <footer>
     <ul>
