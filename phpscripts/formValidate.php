@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 function validateForm($_get) {
 
 
@@ -50,6 +53,7 @@ if (isset($_GET['submit'])) {
     } else {
         unset($_SESSION['shopping-cart']);
         
+        
         echo '
         <div class="result">
         <h2>Informations</h2>
@@ -63,13 +67,16 @@ if (isset($_GET['submit'])) {
         <li><strong>Country :</strong> <span class="result-user">' . $filterCountry . '</span></li>
         </ul>
         </div>';
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $productId = $_POST['productId'];
+        include './phpscripts/empty_cart.php';
+
+
+        
+       
     
-        $json_encode = file_get_contents('./Data/cart.json');
         
         
-        file_put_contents("./Data/cart.json", json_encode([]));
-    }}}}
+        
+       
+    }}}
 
     ?>

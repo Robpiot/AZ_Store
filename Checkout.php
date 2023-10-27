@@ -20,6 +20,9 @@ ini_set('display_errors', 1);
 <h2>Checkout</h2>
 </div>
 <div class="items">
+    <?php
+    include './phpscripts/import_cart.php';
+    ?>
 
 </div>
 </div>
@@ -48,6 +51,7 @@ ini_set('display_errors', 1);
 <?php
 include './phpscripts/formValidate.php';
 validateForm($_GET);
+
     
     
     
