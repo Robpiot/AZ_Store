@@ -2,17 +2,27 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-function validateForm($_get) {
 
 
-if (isset($_GET['submit'])) {
-    $first_name = htmlspecialchars($_GET['first_name']);
-    $last_name = htmlspecialchars($_GET['last_name']);
-    $email = $_GET['email'];
-    $address = htmlspecialchars($_GET['address']);
-    $city = htmlspecialchars($_GET['city']);
-    $zip = $_GET['zip'];
-    $country = htmlspecialchars($_GET['country']);
+
+
+
+
+function validateForm($_post) {
+   
+
+
+
+
+if (isset($_POST['submit'])) {
+    
+    $first_name = htmlspecialchars($_POST['first_name']);
+    $last_name = htmlspecialchars($_POST['last_name']);
+    $email = $_POST['email'];
+    $address = htmlspecialchars($_POST['address']);
+    $city = htmlspecialchars($_POST['city']);
+    $zip = $_POST['zip'];
+    $country = htmlspecialchars($_POST['country']);
     
     $filterFirstname = filter_var($first_name);
     $filterLastname = filter_var($last_name);
@@ -51,32 +61,19 @@ if (isset($_GET['submit'])) {
             echo '<span class="error">' . $error . '</span>';
         }
     } else {
-        unset($_SESSION['shopping-cart']);
         
         
-        echo '
-        <div class="result">
-        <h2>Informations</h2>
-        <ul class="result_info">
-        <li><strong>Firstname : </strong> <span class="result-user">' . $filterFirstname . '</span></li>
-        <li><strong>Lastname : </strong> <span class="result-user">' . $filterLastname . '</span></li>
-        <li><strong>Email : </strong> <span class="result-user">' . $filterEmail . '</span></li>
-        <li><strong>Address : </strong> <span class="result-user">' . $filterAddress . '</span></li>
-        <li><strong>City : </strong> <span class="result-user">' . $filterCity . '</span></li>
-        <li><strong>ZipCode :</strong> <span class="result-user">' . $filterZipCode . '</span></li>
-        <li><strong>Country :</strong> <span class="result-user">' . $filterCountry . '</span></li>
-        </ul>
-        </div>';
-        include './phpscripts/empty_cart.php';
+        
+        echo "<h2>Thank you for your order!</h2>";
+        header('Location: Checkout.php');
+        
 
-
-        
        
     
-        
+    }}
         
         
        
-    }}}
-
+    }
+    
     ?>

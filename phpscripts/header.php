@@ -3,7 +3,7 @@
 <a href="">AZ[store]</a>
     <ul>
     <li><a href="index.php">Home</a></li>
-<li><a href="checkout.php">About</a></li>
+<li><a href="Checkout.php">About</a></li>
 <li><a href="">Products</a></li>
 <li><a href="">Contact</a></li>
     </ul>

@@ -1,7 +1,6 @@
-<?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-?>
+
+
+
 
 <!DOCTYPE html>
 <html lang = ENG>
@@ -11,7 +10,9 @@ ini_set('display_errors', 1);
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <title>AZ-Store</title>
 </head>
+
 <?php include './phpscripts/header.php'; ?>
+
 
 
 <body>
@@ -30,7 +31,7 @@ ini_set('display_errors', 1);
 <section class="form">
 
 
-<form method="GET" action="checkout.php">
+<form method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
     
 <input type="text" name ="first_name" placeholder="First name" id="first_name" autocomplete="off" required>
 
@@ -46,18 +47,25 @@ ini_set('display_errors', 1);
 
 <input type="text" name="country" placeholder="Country" id="country" autocomplete="off" required>
 
-<input input name="submit" value="Submit" type="submit" class="form__button" required>
+<input input name="submit" value="Submit" type="submit" class="form__button" >
 </form>
 <?php
 include './phpscripts/formValidate.php';
-validateForm($_GET);
+
+validateForm($_POST);
+
+if (isset($_POST['submit'])) {
+
+    $cartContent = file_get_contents('./Data/cart.json');
+ $cartItems = json_decode($cartContent, true);
+ file_put_contents("./Data/cart.json", json_encode([]));
+}
+
+?>
 
     
-    
-    
-    ?>
-    
     </section>
+    
     </body>
     <?php include './phpscripts/footer.php'; ?>
     </html>

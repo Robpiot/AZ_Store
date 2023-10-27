@@ -1,8 +1,7 @@
-<?php
-$cartContent = file_get_contents('./Data/cart.json');
-$cartItems = json_decode($cartContent, true);
+<?php 
+if (isset($_POST['submit'])) {
 
-file_put_contents("./Data/cart.json", json_encode([]));
-
-
-?>
+    $cartContent = file_get_contents('./Data/cart.json');
+ $cartItems = json_decode($cartContent, true);
+ file_put_contents("./Data/cart.json", json_encode([]));
+}
